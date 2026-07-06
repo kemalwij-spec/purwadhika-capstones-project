@@ -1,7 +1,6 @@
 # ----------------------------------------------
 # Importing Library
 # ----------------------------------------------
-
 import mysql.connector                  # Digunakan untuk menyambungkan mySQL dengan Python di VSCode
 import matplotlib.pyplot as plt         # Digunakan untuk visualisasi data
 import matplotlib.ticker as mticker     # Digunakan untuk tambahan formatting dalam visualisasi data
@@ -18,8 +17,8 @@ today = date.today()
 # Membuat Koneksi ke mySQL
 mydb = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="uW3uW3!!",
+    user="root",    # Input Username
+    password=" ", # Input Password
     database="db_rental"
 )
 
@@ -29,9 +28,9 @@ mycursor = mydb.cursor()
 # Membuat fungsi untuk menjalankan query SQL dan return as DataFrame
 def sql_df(query):
     """Eksesuksi query SQL dan kembalikan sebagai DataFrame"""
-    mycursor.execute(query) # execute the query
-    result = mycursor.fetchall() # save the result in 'result' variable
-    df = pd.DataFrame(result, columns=mycursor.column_names) # convert to dataframe 
+    mycursor.execute(query) 
+    result = mycursor.fetchall() 
+    df = pd.DataFrame(result, columns=mycursor.column_names)  
     return df
 
 # ----------------------------------------------
@@ -405,6 +404,7 @@ def kembali_ke_menu():
     else:
         selesai()
         return False  # sinyal: keluar dari program
+
 # ----------------------------------------------
 # Tampilan Menu Utama
 # ----------------------------------------------
@@ -867,7 +867,6 @@ INSIGHTS PENDAPTAN PER BULAN PT XYZ:
         kembali()
         continue
 
-
 # # ----------------------------------------------
 # # Fungsi 3: Kalkulator Estimasi Biaya 
 # # ----------------------------------------------
@@ -875,7 +874,7 @@ INSIGHTS PENDAPTAN PER BULAN PT XYZ:
       menu_kalkulator = input('Apakah Anda akan melakukan kalkulasi estimasi Biaya Rental? (Y/N): ').upper()
       
       if menu_kalkulator == 'Y' :  # Jika memilih 'Y' untuk melakukan estimasi Biaya Rental
-        # Menampilkan Daftar Mobil yang Tersedia menggunakan Query SQL
+        # Menampilkan Daftar Mobil yang Tersedia dari df yang tersedia
         
         print()
         print('=' * 100)
